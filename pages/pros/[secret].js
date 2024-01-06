@@ -26,18 +26,17 @@ export default function Professionals({ verified, secret, data }) {
 
   const handleSearch = ({ name, startedBefore, startedAfter }) => {
     const filtered = data.filter((professional) => {
-      const nameMatch = !name || professional.stageName.toLowerCase().includes(name.toLowerCase());
+      const nameMatch = !name || professional.stageName.toLowerCase().includes(name.toLowerCase())
   
-      const startedBeforeMatch = !startedBefore || (professional.playingSince && new Date(professional.playingSince) <= new Date(startedBefore));
+      const startedBeforeMatch = !startedBefore || (professional.playingSince && new Date(professional.playingSince) <= new Date(startedBefore))
   
-      const startedAfterMatch = !startedAfter || (professional.playingSince && new Date(professional.playingSince) >= new Date(startedAfter));
+      const startedAfterMatch = !startedAfter || (professional.playingSince && new Date(professional.playingSince) >= new Date(startedAfter))
   
-      return nameMatch && startedBeforeMatch && startedAfterMatch;
-    });
+      return nameMatch && startedBeforeMatch && startedAfterMatch
+    })
   
-    setFilteredData(filtered);
-  };
-  
+    setFilteredData(filtered)
+  }
 
   return (
     <div className='containerNotB'>

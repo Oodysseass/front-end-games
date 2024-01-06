@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Error from 'next/error'
-import { useRouter } from 'next/router'
 import React from 'react'
 
 import NavigationBar from '@/components/NavigationBar'
@@ -18,8 +17,6 @@ export const getServerSideProps = async ({ params }) => {
 
 export default function HomePage({ verified, secret }) {
   if (!verified) return (<Error statusCode={401} />)
-
-  const router = useRouter()
 
   return (
     <div className='containerNotB'>

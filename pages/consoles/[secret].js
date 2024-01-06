@@ -40,9 +40,6 @@ export default function Professionals({ verified, secret, data }) {
     setFilteredData(filtered)
   }
 
-
-
-
   return (
     <div className='containerNotB'>
       <Head>
