@@ -23,7 +23,6 @@ export default function Professionals({ verified, secret, data }) {
   if (!verified) return (<Error statusCode={401} />)
 
   const [filteredData, setFilteredData] = useState(data)
-
   const handleSearch = ({ name, startedBefore, startedAfter }) => {
     const filtered = data.filter((company) => {
       const nameMatch = !name || company.name.toLowerCase().includes(name.toLowerCase())
@@ -38,12 +37,10 @@ export default function Professionals({ verified, secret, data }) {
     setFilteredData(filtered)
   }
 
-
-
   return (
     <div className='containerNotB'>
       <Head>
-        <title>Professionals</title>
+        <title>Companies</title>
       </Head>
 
       <NavigationBar secret={secret} />
