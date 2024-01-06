@@ -2,10 +2,12 @@ import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import axios from 'axios'
-
 
 export default function Authentication() {
   const router = useRouter()
@@ -14,52 +16,52 @@ export default function Authentication() {
   const handleSubmit = async () => {
     try {
       const response = await axios.post('./api/authentication', {
-        password
+        password,
       })
 
       router.push(`./home/${response.data.secret}`)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter')
+    if (e.key === 'Enter') {
+      e.preventDefault()
       handleSubmit()
+    }
   }
 
   return (
-    <div className='containerNotB'>
+    <Container className="py-5">
       <Head>
         <title>Login</title>
       </Head>
 
-      <main className='authMain'>
-        <div className='authContainer'>
-          <div className='authInput'>
-            <FloatingLabel
-              controlId='floatingInput'
-              label='Password'
-              className='mb-3'
-            >
-              <Form.Control value={password}
-                onChange={e => setPassword(e.target.value)}
+      <Row className="justify-content-center">
+        <Col md={6}>
+          <Form className="authContainer p-4 border rounded">
+            <h2 className="text-center mb-4">Login</h2>
+            <FloatingLabel controlId="floatingInput" label="Password" className="mb-3">
+              <Form.Control
                 type="password"
                 id="pass"
                 name="pass"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder='Password'
+                placeholder="Password"
               />
             </FloatingLabel>
 
-            <Button variant='dark'
-              onClick={handleSubmit}
-              className='authSubmit'>
-              Submit
-            </Button>
+            <div className="text-center">
+              <Button variant="dark" onClick={handleSubmit} className="authSubmit">
+                Submit
+              </Button>
             </div>
-          </div>
-      </main>
-    </div>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   )
 }
