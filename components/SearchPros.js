@@ -27,14 +27,14 @@ export default function SearchPros({ onSearch }) {
         <Col md={3}>
           <Form.Group controlId="formStartedAfter">
             <Form.Label>Started After</Form.Label>
-            <Form.Control type="date" value={startedAfter} onChange={(e) => setStartedAfter(e.target.value)} />
+            <Form.Control type="number" value={startedAfter} onChange={(e) => setStartedAfter(e.target.value)} />
           </Form.Group>
         </Col>
 
         <Col md={3}>
           <Form.Group controlId="formStartedBefore">
             <Form.Label>Started Before</Form.Label>
-            <Form.Control type="date" value={startedBefore} onChange={(e) => setStartedBefore(e.target.value)} />
+            <Form.Control type="number" value={startedBefore} onChange={(e) => setStartedBefore(e.target.value)} />
           </Form.Group>
         </Col>
 
