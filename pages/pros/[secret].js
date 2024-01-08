@@ -28,9 +28,9 @@ export default function Professionals({ verified, secret, data }) {
     const filtered = data.filter((professional) => {
       const nameMatch = !name || professional.stageName.toLowerCase().includes(name.toLowerCase())
   
-      const startedBeforeMatch = !startedBefore || (professional.playingSince && new Date(professional.playingSince) <= new Date(startedBefore))
+      const startedBeforeMatch = !startedBefore || (professional.playingSince && professional.playingSince <= startedBefore)
   
-      const startedAfterMatch = !startedAfter || (professional.playingSince && new Date(professional.playingSince) >= new Date(startedAfter))
+      const startedAfterMatch = !startedAfter || (professional.playingSince && professional.playingSince >= startedAfter)
   
       return nameMatch && startedBeforeMatch && startedAfterMatch
     })
